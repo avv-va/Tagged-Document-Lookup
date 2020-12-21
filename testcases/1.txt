@@ -1,4 +1,1 @@
-D1: bird, tori, parande
-D2: tiger, tora, babr
-D3: tora, tori
-D4: bird, tiger
+tiger, tora, babr, sas, bird, tori, parande, tiger, tora, babr
