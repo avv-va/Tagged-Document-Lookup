@@ -5,10 +5,10 @@ class Document:
 
 
 class Tag:
-    # documents = []
 
     def __init__(self, value):
         self.value = value
+        self.documents = []
 
-    # def add_corresponding_document(self, doc):
-    #     self.documents.append(doc)
+    def add_document(self, doc):
+        self.documents.append(doc)

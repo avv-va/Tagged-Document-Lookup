@@ -1,23 +1,23 @@
 from collections import Counter
 
 
-def preprocess_tags(): pass
+def preprocess(all_documents):
+    for doc in all_documents:
+        for tag in doc.tags:
+            tag.add_document(doc)
 
 
-def query(all_documents, all_tags, target_tags):
-    all_tags = preprocess_tags(all_documents, all_tags)
+def query(all_documents, query_tags):
+    preprocess(all_documents)
 
-    all_documents_in_target_tags = []
-    for doc in target_tags.docs:
-        all_documents_in_target_tags.append(doc)
-
-    should_be_repeated = len(target_tags)
+    documents_of_query_tags = []
+    for tag in query_tags:
+        documents_of_query_tags += tag.documents
+    documents_with_numbers_of_repetition = Counter(documents_of_query_tags)
 
     result_docs = []
-    documents_with_numbers_of_repetence = Counter(all_documents_in_target_tags)  # complexitiy is O(N)
-
-    for doc, repetence_num in documents_with_numbers_of_repetence.items():
-        if repetence_num == should_be_repeated and len(doc.tags) == should_be_repeated:
+    for doc, repetition_num in documents_with_numbers_of_repetition.items():
+        if len(doc.tags) == repetition_num:
             result_docs.append(doc)
 
     return result_docs
