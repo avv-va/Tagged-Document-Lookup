@@ -1,0 +1,10 @@
+D0: tag3, tag1, tag2
+D1: tag3
+D2: tag3
+D3: tag2, tag3
+D4: tag2, tag1
+D5: tag2, tag3
+D6: tag3, tag1, tag2
+D7: tag1
+D8: tag1, tag2, tag3
+D9: tag1, tag2

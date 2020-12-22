@@ -1,5 +1,2 @@
-DOCUMENTS_ADDRESS = "documents/1.txt"
-TESTCASE_ADDRESS = "testcases/1.txt"
-
-ALGORITHM_TYPE = {"smart": True,
-                  "naive": False}
+DOCUMENTS_ADDRESS = "testcases/documents/1.txt"
+QUERY_ADDRESS = "testcases/queries/1.txt"
