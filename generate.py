@@ -1,23 +1,19 @@
-# D1: bird, tori, parande
-# D2: tiger, tora, babr
-# D3: tora, tori
-# D4: bird, tiger
 
+from algorithm.naive import query
 import random
-
 
 def generate_tags(num_of_tags):
     tags = []
     for i in range(0, num_of_tags):
-        tags.append("tag{}".format(random.randint(0, num_of_tags)))
+        tags.append(f'tag{i}')
     return tags
 
 
-def generate_documents(tags, num_of_documents):
+def generate_documents(tags, num_of_documents, num_of_doc_per_tag):
     documents = []
     for i in range(0, num_of_documents):
 
-        number_of_tags = random.randint(1, len(tags))
+        number_of_tags = random.randint(num_of_doc_per_tag[0], min(num_of_doc_per_tag[1], len(tags)))
         random_tags = random.sample(tags, k=number_of_tags)
 
         doc_line = f'D{i}: '
@@ -41,22 +37,22 @@ def generete_query_tags(tags, num_of_queries):
     return query_tags_to_write
 
 
-def write_tescases(documents, queries):
-    with open("testcases/documents/2.txt", "w") as writer:
+def write_tescases(documents, queries, testcase_number):
+    with open(f'testcases/documents/{testcase_number}.txt', "w") as writer:
         writer.write("\n".join(documents))
 
-    with open("testcases/queries/2.txt", "w") as writer:
+    with open(f'testcases/queries/{testcase_number}.txt', "w") as writer:
         writer.writelines(queries)
 
 
 if __name__ == "__main__":
-
-    # documents: 10^4 ta 10^5
-    # tags: 100
-    # d_t: 2 ta 7
-    # query: 10 ta 40
-
-    tags = generate_tags(3)
-    documents = generate_documents(tags, 10)
-    queries = generete_query_tags(tags, 4)
-    write_tescases(documents, queries)
+    documents_interval = (10**4, 10**5 + 1, 3000)
+    queries_interval = (10, 40 + 1, 5)
+    testcase_number = 0
+    for doc in range(documents_interval[0], documents_interval[1], documents_interval[2]):
+        for query in range(queries_interval[0], queries_interval[1], queries_interval[2]):
+            tags = generate_tags(num_of_tags=100)
+            documents = generate_documents(tags=tags, num_of_documents=doc, num_of_doc_per_tag=(2, 7))
+            queries = generete_query_tags(tags=tags, num_of_queries=query)
+            write_tescases(documents, queries, testcase_number)
+            testcase_number += 1

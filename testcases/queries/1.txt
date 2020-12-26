@@ -1,1 +1,1 @@
-bird, tiger, bird, tori, parande, bird, tori, parande, bird, tori, parande, tora, tori
+tag10, tag11, tag65, tag68, tag39, tag73, tag82, tag60, tag98, tag88, tag69, tag33, tag31, tag45, tag25
