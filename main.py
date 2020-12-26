@@ -1,9 +1,9 @@
 import argparse
 
-from config import DOCUMENTS_ADDRESS, QUERY_ADDRESS
-from naive import query as naive_query
-from smart import query as smart_query
-from reader import get_all_documents_and_tags, get_query_input
+from algorithm.config import DOCUMENTS_ADDRESS, QUERY_ADDRESS
+from algorithm.naive import query as naive_query
+from algorithm.smart import query as smart_query, preprocess
+from algorithm.reader import get_all_documents_and_tags, get_query_input
 
 
 def get_args():
@@ -19,6 +19,7 @@ if __name__ == "__main__":
     if get_args().algorithm == "naive":
         result = naive_query(all_documents, query_tags)
     else:
+        preprocess(all_documents)
         result = smart_query(all_documents, query_tags)
 
     for doc in result:
