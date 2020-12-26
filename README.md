@@ -9,7 +9,7 @@ Then, enter the followig command:
 
 Note: algorithm_type can be either ```naive``` or ```smart```.
 
-## Benchmark
+## Benchmark 
 To simulate the algorithm with the generated testcases as the input, enter the following:
 
 ```python benchmark.py```
